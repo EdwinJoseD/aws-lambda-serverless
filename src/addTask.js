@@ -1,5 +1,6 @@
 const { v4 } = require("uuid");
 const AWS = require("aws-sdk");
+require("dotenv").config();
 
 const addTask = async (event) => {
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
@@ -24,7 +25,7 @@ const addTask = async (event) => {
     .catch(console.error(`Error adding task ${id}`));
 
   return {
-    statusCode: 200,
+    status: 200,
     body: JSON.stringify(newTask),
   };
 };
